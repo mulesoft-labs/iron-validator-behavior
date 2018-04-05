@@ -5,46 +5,30 @@ Copyright 2017 Mulesoft.
 All rights reserved.
 -->
 
-<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../iron-validator-behavior.html">
-
 <script>
-
-  Polymer({
-
-    is: 'cats-only',
-
-    behaviors: [
-      Polymer.IronValidatorBehavior
-    ],
-
-    properties: {
-      message: {
-        type: String,
-        value: 'Only cats are allowed'
-      }
-    },
-
-    validateObject: function(obj) {
-      var valid = true;
-      for (var key in obj) {
-        if (obj[key] !== 'cats') {
-          valid = false;
-          break;
-        }
-      }
-      return valid;
-    },
-
-    validate: function(values) {
-      if (typeof values === 'object') {
-        return this.validateObject(values);
-      } else {
-        var value = Array.isArray(values) ? values.join('') : values;
-        return value.match(/^(c|ca|cat|cats)?$/) !== null;
+class CatsOnly extends Polymer.IronValidatorBehavior(Polymer.Element) {
+  static get is() { return 'cats-only'; }
+  validateObject(obj) {
+    let valid = true;
+    for (let key in obj) {
+      if (obj[key] !== 'cats') {
+        valid = false;
+        break;
       }
     }
+    return valid;
+  }
 
-  });
-
+  validate(values) {
+    if (typeof values === 'object') {
+      return this.validateObject(values);
+    } else {
+      const value = Array.isArray(values) ? values.join('') : values;
+      return value.match(/^(c|ca|cat|cats)?$/) !== null;
+    }
+  }
+}
+window.customElements.define(CatsOnly.is, CatsOnly);
 </script>

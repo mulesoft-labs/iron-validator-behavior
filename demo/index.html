@@ -13,117 +13,121 @@ All rights reserved.
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <title>anypoint-validator-behavior demo</title>
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../shadycss/apply-shim.html">
+  <link rel="import" href="../../polymer/lib/elements/custom-style.html">
+  <link rel="import" href="../../polymer/lib/elements/dom-bind.html">
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
   <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
   <link rel="import" href="cats-only.html">
-  <style is="custom-style" include="demo-pages-shared-styles">
-  .vertical-section-container {
-    max-width: 600px;
-  }
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      h1 {
+        margin-left: 30px;
+      }
 
-  h1 {
-    margin-left: 30px;
-  }
+      .centered {
+        padding: 0;
+      }
 
-  .centered {
-    padding: 0;
-  }
+      .valid {
+        color: var(--google-green-500);
+      }
 
-  .valid {
-    color: var(--google-green-500);
-  }
+      .invalid {
+        color: var(--google-red-500);
+      }
 
-  .invalid {
-    color: var(--google-red-500);
-  }
+      fieldset {
+        background-color: var(--google-grey-100);
+        border: none;
+        margin: 10px 0;
+        padding: 10px 30px;
+      }
 
-  fieldset {
-    background-color: var(--google-grey-100);
-    border: none;
-    margin: 10px 0;
-    padding: 10px 30px;
-  }
+      legend {
+        float: left;
+        width: 100%;
+      }
 
-  legend {
-    float: left;
-    width: 100%;
-  }
-
-  input,
-  select {
-    padding: 0.4em;
-    font-size: 16px;
-    margin: 5px;
-  }
-  </style>
+      input,
+      select {
+        padding: 0.4em;
+        font-size: 16px;
+        margin: 5px;
+      }
+    </style>
+  </custom-style>
 </head>
 
 <body unresolved>
   <div class="vertical-section-container centered">
     <h1>&lt;iron-validator-behavior&gt;</h1>
-    <template is="dom-bind">
+    <dom-bind id="demo">
+      <template is="dom-bind">
 
-      <cats-only></cats-only>
+        <cats-only message="Only cats are allowed!"></cats-only>
 
-      <fieldset>
-        <legend>Only type <code>cats</code></legend>
-        <input on-input="_onInput">
-        <span class="valid" hidden$="[[!valid]]">valid</span>
-        <span class="invalid" hidden$="[[valid]]">invalid</span>
-      </fieldset>
-
-      <fieldset>
-        <legend>Only type <code>cats</code> across both input fields</legend>
-
-        <span on-input="_onInputMulti">
-          <input>
-          <input>
-        </span>
-
-        <span class="valid" hidden$="[[!validMulti]]">valid</span>
-        <span class="invalid" hidden$="[[validMulti]]">invalid</span>
-      </fieldset>
-
-      <section>
-      <form on-submit="_onSubmit">
         <fieldset>
-          <legend>Only type <code>cats</code> in the form</legend>
-          <label>
-            Type something: <input name="something">
-          </label>
-          <br>
-          <label>
-            Your favorite pet:
-            <select name="pet">
-              <option>iguanas</option>
-              <option>cats</option>
-              <option>pancakes</option>
-            </select>
-          </label>
-          <br>
-          <button type="submit">submit!</button>
-          <span class="valid" hidden$="[[!validForm]]">valid</span>
-          <span class="invalid" hidden$="[[validForm]]">invalid</span>
+          <legend>Only type <code>cats</code></legend>
+          <input on-input="_onInput">
+          <span class="valid" hidden$="[[!valid]]">valid</span>
+          <span class="invalid" hidden$="[[valid]]">invalid</span>
         </fieldset>
-      </form>
-      </section>
 
-    </template>
+        <fieldset>
+          <legend>Only type <code>cats</code> across both input fields</legend>
+
+          <span on-input="_onInputMulti">
+            <input>
+            <input>
+          </span>
+
+          <span class="valid" hidden$="[[!validMulti]]">valid</span>
+          <span class="invalid" hidden$="[[validMulti]]">invalid</span>
+        </fieldset>
+
+        <section>
+        <form on-submit="_onSubmit">
+          <fieldset>
+            <legend>Only type <code>cats</code> in the form</legend>
+            <label>
+              Type something: <input name="something">
+            </label>
+            <br>
+            <label>
+              Your favorite pet:
+              <select name="pet">
+                <option>iguanas</option>
+                <option>cats</option>
+                <option>pancakes</option>
+              </select>
+            </label>
+            <br>
+            <button type="submit">submit!</button>
+            <span class="valid" hidden$="[[!validForm]]">valid</span>
+            <span class="invalid" hidden$="[[validForm]]">invalid</span>
+          </fieldset>
+        </form>
+        </section>
+      </template>
+    </dom-bind>
   </div>
   <script>
     document.addEventListener('WebComponentsReady', function() {
-      var validator = new Polymer.IronMeta({type: 'validator'}).byKey('cats-only');
-      var scope = document.querySelector('template[is=dom-bind]');
+      const validator = new Polymer.IronMeta({
+        type: 'validator'
+      }).byKey('cats-only');
+      const scope = document.getElementById('demo');
       scope.valid = scope.validMulti = scope.validForm = true;
-      scope._onInput = function(event) {
-        this.valid = validator.validate(event.target.value);
-        event.target.setCustomValidity(validator.message);
+      scope._onInput = function(e) {
+        this.valid = validator.validate(e.target.value);
+        e.target.setCustomValidity(validator.message);
       };
-      scope._onInputMulti = function(event) {
-        var values = [];
-        var nodes = Polymer.dom(event.currentTarget).querySelectorAll('input');
-        var i;
-        var len;
+      scope._onInputMulti = function(e) {
+        const values = [];
+        const nodes = e.target.parentNode.querySelectorAll('input');
+        let i;
+        let len;
         for (i = 0, len = nodes.length; i < len; i++) {
           values.push(nodes[i].value);
         }
@@ -132,11 +136,11 @@ All rights reserved.
           nodes[i].setCustomValidity(this.validMulti ? '' : validator.message);
         }
       };
-      scope._onSubmit = function(event) {
-        event.preventDefault();
-        var data = {};
-        for (var el, i = 0, len = event.target.elements.length; i < len; i++) {
-          el = event.target.elements[i];
+      scope._onSubmit = function(e) {
+        e.preventDefault();
+        let data = {};
+        for (let el, i = 0, len = e.target.elements.length; i < len; i++) {
+          el = e.target.elements[i];
           if (el.name) {
             data[el.name] = el.value;
           }
