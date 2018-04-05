@@ -11,7 +11,7 @@
   "private": true,
   "main": "iron-validator-behavior.html",
   "scripts": {
-    "lint": "polymer lint iron-validator-behavior.html --rules polymer-1",
+    "lint": "polymer lint iron-validator-behavior.html",
     "test-sauce": "polymer test --plugin sauce --job-name \"iron-validator-behavior:local-test\"",
     "test": "polymer test --plugin local",
     "update-types": "gen-typescript-declarations --deleteExisting --outDir ."
