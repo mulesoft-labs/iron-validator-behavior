@@ -18,10 +18,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mulesoft/iron-validator-behavior.git"
+    "url": "git://github.com/mulesoft-labs/iron-validator-behavior.git"
   },
   "bugs": {
-    "url": "https://github.com/mulesoft/iron-validator-behavior/issues",
+    "url": "https://github.com/mulesoft-labs/iron-validator-behavior/issues",
     "email": "arc@mulesoft.com"
   }
 }
