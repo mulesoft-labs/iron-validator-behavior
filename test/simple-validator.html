@@ -7,7 +7,7 @@ All rights reserved.
 <link rel="import" href="../../polymer/polymer-element.html">
 <link rel="import" href="../iron-validator-behavior.html">
 <script>
-class SimpleValidator extends Polymer.IronValidatorBehavior(Polymer.Element) {
+class SimpleValidator extends Polymer.IronValidatorMixin(Polymer.Element) {
   static get is() { return 'simple-validator'; }
 }
 window.customElements.define(SimpleValidator.is, SimpleValidator);
