@@ -1,7 +1,7 @@
 {
   "name": "iron-validator-behavior",
   "description": "Insert description here.",
-  "version": "2.0.0-preview",
+  "version": "2.0.0",
   "license": "(C) MuleSoft. All rights reserved.",
   "author": "Pawel Psztyc",
   "keywords": [

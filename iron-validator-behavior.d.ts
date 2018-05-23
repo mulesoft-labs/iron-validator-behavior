@@ -11,8 +11,7 @@
 /// <reference path="../polymer/types/lib/utils/mixin.d.ts" />
 /// <reference path="../iron-meta/iron-meta.d.ts" />
 
-declare namespace Anypoint {
-
+declare namespace Polymer {
 
   /**
    * ** Anypoint version of the component **
@@ -23,12 +22,6 @@ declare namespace Anypoint {
    * Element instances implementing this behavior will be registered for use
    * in elements that implement  `Polymer.IronValidatableBehavior`.
    */
-  function IronValidatorBehavior<T extends new (...args: any[]) => {}>(base: T): T & IronValidatorBehaviorConstructor;
-
-  interface IronValidatorBehaviorConstructor {
-    new(...args: any[]): IronValidatorBehavior;
-  }
-
   interface IronValidatorBehavior {
 
     /**
@@ -36,6 +29,43 @@ declare namespace Anypoint {
      */
     message: string|null|undefined;
     ready(): void;
+
+    /**
+     * Implement custom validation logic in this function.
+     *
+     * @param values The value to validate. May be any type depending
+     * on the validation logic.
+     * @returns true if `values` is valid.
+     */
+    validate(values: object|null): Boolean|null;
+  }
+
+  const IronValidatorBehavior: object;
+
+
+  /**
+   * ** Anypoint version of the component **
+   *
+   * Polymer 2.0 Mixin class.
+   *
+   * This element is to be private and used as a replacemenet to any PolymerElements
+   *
+   * Use `Polymer.IronValidatorBehavior` to implement a custom input/form validator.
+   * Element instances implementing this behavior will be registered for use
+   * in elements that implement  `Polymer.IronValidatableBehavior`.
+   */
+  function IronValidatorMixin<T extends new (...args: any[]) => {}>(base: T): T & IronValidatorMixinConstructor;
+
+  interface IronValidatorMixinConstructor {
+    new(...args: any[]): IronValidatorMixin;
+  }
+
+  interface IronValidatorMixin {
+
+    /**
+     * Error message to display when the form control did not passed the validation.
+     */
+    message: string|null|undefined;
 
     /**
      * Implement custom validation logic in this function.
