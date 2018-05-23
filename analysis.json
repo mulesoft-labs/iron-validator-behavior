@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.0.0",
+  "mixins": [
+    {
+      "description": "** Anypoint version of the component **\n\nPolymer 2.0 Mixin class.\n\nThis element is to be private and used as a replacemenet to any PolymerElements\n\nUse `Polymer.IronValidatorBehavior` to implement a custom input/form validator.\nElement instances implementing this behavior will be registered for use\nin elements that implement  `Polymer.IronValidatableBehavior`.",
+      "summary": "",
+      "path": "iron-validator-behavior.html",
+      "properties": [
+        {
+          "name": "message",
+          "type": "string | null | undefined",
+          "description": "Error message to display when the form control did not passed the validation.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 8
+            },
+            "end": {
+              "line": 68,
+              "column": 23
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "validate",
+          "description": "Implement custom validation logic in this function.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 4
+            },
+            "end": {
+              "line": 85,
+              "column": 23
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "values",
+              "type": "(Object | String)",
+              "description": "The value to validate. May be any type depending\non the validation logic."
+            }
+          ],
+          "return": {
+            "type": "Boolean",
+            "desc": "true if `values` is valid."
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 57,
+          "column": 0
+        },
+        "end": {
+          "line": 88,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "name": "Polymer.IronValidatorMixin",
+      "attributes": [
+        {
+          "name": "message",
+          "description": "Error message to display when the form control did not passed the validation.",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 8
+            },
+            "end": {
+              "line": 68,
+              "column": 23
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    }
+  ],
+  "metadata": {
+    "polymer": {
+      "behaviors": [
+        {
+          "description": "** Anypoint version of the component **\n\nThis element is to be private and used as a replacemenet to any PolymerElements\n\nUse `Polymer.IronValidatorBehavior` to implement a custom input/form validator.\nElement instances implementing this behavior will be registered for use\nin elements that implement  `Polymer.IronValidatableBehavior`.",
+          "summary": "",
+          "path": "iron-validator-behavior.html",
+          "properties": [
+            {
+              "name": "message",
+              "type": "string | null | undefined",
+              "description": "Error message to display when the form control did not passed the validation.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 25,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 19
+                }
+              },
+              "metadata": {
+                "polymer": {
+                  "attributeType": "String"
+                }
+              }
+            }
+          ],
+          "methods": [
+            {
+              "name": "ready",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 27,
+                  "column": 2
+                },
+                "end": {
+                  "line": 33,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "validate",
+              "description": "Implement custom validation logic in this function.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 40,
+                  "column": 2
+                },
+                "end": {
+                  "line": 40,
+                  "column": 31
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "values",
+                  "type": "Object",
+                  "description": "The value to validate. May be any type depending\non the validation logic."
+                }
+              ],
+              "return": {
+                "type": "Boolean",
+                "desc": "true if `values` is valid."
+              }
+            }
+          ],
+          "staticMethods": [],
+          "demos": [
+            {
+              "url": "demo/index.html",
+              "description": "demo"
+            },
+            {
+              "url": "demo/index.html",
+              "description": ""
+            }
+          ],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 20,
+              "column": 0
+            },
+            "end": {
+              "line": 41,
+              "column": 2
+            }
+          },
+          "privacy": "public",
+          "name": "Polymer.IronValidatorBehavior",
+          "attributes": [
+            {
+              "name": "message",
+              "description": "Error message to display when the form control did not passed the validation.",
+              "sourceRange": {
+                "start": {
+                  "line": 25,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 19
+                }
+              },
+              "metadata": {},
+              "type": "string | null | undefined"
+            }
+          ],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        }
+      ]
+    }
+  }
+}
